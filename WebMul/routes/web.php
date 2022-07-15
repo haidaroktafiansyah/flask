@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index']);
 Route::get('/prediction', [MainController::class, 'index2']);
+Route::post('/upload/proses', [MainController::class, 'upload']);

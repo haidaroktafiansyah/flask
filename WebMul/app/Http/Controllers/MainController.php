@@ -26,6 +26,17 @@ class MainController extends Controller
         return view('prediction')->with('data', $response);
     }
 
+    public function upload(Request $request)
+    {
+        $this->validate($request, ['file' => 'required|mimes:csv,txt']);
+        $file = $request->file('file');
+        $file->move('filesUpload',$file->getClientOriginalName());
+        
+        $response = Http::get('http://127.0.0.1:5000/prediction');
+        $response = json_decode($response , true);
+        return view('prediction')->with('data', $response);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -13,7 +13,7 @@
         <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"> </script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
-    
+
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,7 +41,7 @@
                                     <td> <?php echo $eachData['username']; ?></td>
                                     <td> <?php echo $eachData['tweet']; ?></td>
                                     <td> <?php echo $eachData['preprocessing']; ?></td>
-                                    <td> <?php echo ($eachData['label'] == 1)? 'positif' : 'negatif'; ?></td>
+                                    <td> <?php echo ($eachData['label'] == 1) ? 'positif' : 'negatif'; ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -49,6 +49,26 @@
 
                         </tfoot>
                     </table>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
+                    <form action="/upload/proses" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+
+                        <div class="form-group">
+                            <b>File CSV</b><br />
+                            <input type="file" name="file">
+                        </div>
+
+                        <input type="submit" value="Upload" class="btn btn-primary">
+                    </form>
                 </div>
             </div>
         </div>
