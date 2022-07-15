@@ -55,7 +55,6 @@ def update():
   return df
   
 
-
 # with open('tes_data.csv','r') as f:
 #   reader = csv.reader(f, delimiter='\t')
 #   for i,line in enumerate(reader):

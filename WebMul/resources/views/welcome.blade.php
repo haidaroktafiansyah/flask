@@ -13,50 +13,13 @@
         <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"> </script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            padding: 0;
-            background-color: var(--clr-light);
-            color: var(--clr-black);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.125rem;
-            justify-content: center;
-            align-items: center;
-        }
-
-        h2 {
-            font-family: 'Indie Flower', cursive;
-            font-size: 32px;
-            color: #03A9F4;
-            font-weight: bold;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        table caption {
-            padding: .5em 0;
-        }
-
-        table.dataTable th {
-            white-space: nowrap;
-        }
-
-        table.dataTable td {
-            white-space: nowrap;
-        }
-
-        .p {
-            text-align: center;
-            padding-top: 140px;
-            font-size: 14px;
-        }
-    </style>
+    
 
     <body>
-        <h2> DATA</h2>
-        <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">DATA</a>
+        </nav>
+        <div class="container pt-5">
             <div class="row">
                 <div class="col-xs-12">
                     <table class="table table-bordered table-hover dt-responsive">

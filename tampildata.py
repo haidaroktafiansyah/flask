@@ -1,6 +1,6 @@
 import snscrape.modules.twitter as sntwitter
 import pandas as pd
-import predict as predict
+import predict as predictFile
 import numpy as np
 from flask import Flask, jsonify
 
@@ -13,7 +13,7 @@ def index():
 
 @app.route('/Prediction')
 def index2():
-    data = predict.update
-    return data
+    data = predictFile.update()
+    return data.to_json(orient='records')
 
 app.run()
