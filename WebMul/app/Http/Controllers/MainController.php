@@ -16,7 +16,14 @@ class MainController extends Controller
     {
         $response = Http::get('http://127.0.0.1:5000/trainingDatas');
         $response = json_decode($response , true);
-        return view('welcome')->with('data', $response);
+        return view('training')->with('data', $response);
+    }
+
+    public function index2()
+    {
+        $response = Http::get('http://127.0.0.1:5000/prediction');
+        $response = json_decode($response , true);
+        return view('prediction')->with('data', $response);
     }
 
     /**

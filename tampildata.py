@@ -11,7 +11,7 @@ app = Flask(__name__)
 def index():
     return df.to_json(orient='records')
 
-@app.route('/Prediction')
+@app.route('/prediction')
 def index2():
     data = predictFile.update()
     return data.to_json(orient='records')

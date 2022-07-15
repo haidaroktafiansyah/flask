@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainController::class, 'index']);
+Route::get('/prediction', [MainController::class, 'index2']);
