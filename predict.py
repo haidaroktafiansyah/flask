@@ -42,17 +42,29 @@ def Steamming(kalimat):
 
 
 
-with open('tes_data.csv','r') as f:
-  reader = csv.reader(f, delimiter='\t')
-  for i,line in enumerate(reader):
-    text = line[0].split(',') [3]
-    CFRP_text = CFRP(text)
-    Filtering_text = Filtering(CFRP_text)
-    Steamming_text=Steamming(Filtering_text)
-    transform_cvec = cvec.transform([text])
-    transform_tfid = tfid.transform(transform_cvec)
-    predict_result = model.predict(transform_tfid)
-    print(Steamming_text,predict_result)
+def update():
+  df = pd.read_csv("./tes_data.csv")
+  CFRP_text = df['tweet'].apply(CFRP)
+  Filtering_text = Filtering(CFRP_text)
+  Steamming_text=Steamming(Filtering_text)
+  transform_cvec = cvec.transform(df['tweet'])
+  transform_tfid = tfid.transform(transform_cvec)
+  predict_result = model.predict(transform_tfid)
+  return [Steamming_text,predict_result]
+  
+
+
+# with open('tes_data.csv','r') as f:
+#   reader = csv.reader(f, delimiter='\t')
+#   for i,line in enumerate(reader):
+#     text = line[0].split(',') [3]
+#     CFRP_text = CFRP(text)
+#     Filtering_text = Filtering(CFRP_text)
+#     Steamming_text=Steamming(Filtering_text)
+#     transform_cvec = cvec.transform([text])
+#     transform_tfid = tfid.transform(transform_cvec)
+#     predict_result = model.predict(transform_tfid)
+#     print(Steamming_text,predict_result)
     # with open('./testing result1.csv', 'a',newline='') as f:
     #     writer=csv.writer(f)
     #     writer.writerow([text,Steamming_text , predict_result])

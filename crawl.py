@@ -69,14 +69,5 @@ df['tweet'] = df['tweet'].apply(lambda x: removePunctuation(x))
 df['tweet'] = df['tweet'].apply(lambda x: Tokenize(x))
 df['tweet'] = df['tweet'].apply(lambda x: JoinSc(x))
 
-extr=df[['date','username','tweet']]
-extr.to_csv('./tes_data.csv')
-
-print(df)
-
-app = Flask(__name__)
-@app.route('/')
-def index():
-    return df.to_json(orient='records')
-
-app.run()
+# extr=df[['date','username','tweet']]
+# extr.to_csv('./tes_data.csv')
