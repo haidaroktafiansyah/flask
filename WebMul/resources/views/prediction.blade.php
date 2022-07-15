@@ -49,26 +49,7 @@
 
                         </tfoot>
                     </table>
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-
-                    <form action="/upload/proses" method="POST" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-
-                        <div class="form-group">
-                            <b>File CSV</b><br />
-                            <input type="file" name="file">
-                        </div>
-
-                        <input type="submit" value="Upload" class="btn btn-primary">
-                    </form>
+                   
                 </div>
             </div>
         </div>

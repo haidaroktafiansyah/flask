@@ -54,7 +54,7 @@ def JoinSc(text):
 query = "(#Omicron) lang:id"
 
 tweets = []
-limit = 50
+limit = 10
 
 for tweet in sntwitter.TwitterHashtagScraper(query).get_items():
     if len(tweets)==limit:
@@ -69,5 +69,5 @@ df['tweet'] = df['tweet'].apply(lambda x: removePunctuation(x))
 df['tweet'] = df['tweet'].apply(lambda x: Tokenize(x))
 df['tweet'] = df['tweet'].apply(lambda x: JoinSc(x))
 
-# extr=df[['date','username','tweet']]
-# extr.to_csv('./tes_data.csv')
+extr=df[['date','username','tweet']]
+extr.to_csv('./tes_data2.csv')

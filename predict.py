@@ -43,7 +43,7 @@ def Steamming(kalimat):
 
 
 def update():
-  df = pd.read_csv("./tes_data.csv")
+  df = pd.read_csv("WebMul/public/filesUpload/tes_data.csv")
   cleandata = df['tweet'].apply(CFRP)
   cleandata = df['tweet'].apply(Filtering)
   cleandata = df['tweet'].apply(Steamming)

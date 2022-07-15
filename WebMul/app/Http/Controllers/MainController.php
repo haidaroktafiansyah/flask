@@ -30,7 +30,7 @@ class MainController extends Controller
     {
         $this->validate($request, ['file' => 'required|mimes:csv,txt']);
         $file = $request->file('file');
-        $file->move('filesUpload',$file->getClientOriginalName());
+        $file->move('filesUpload','tes_data.csv');
         
         $response = Http::get('http://127.0.0.1:5000/prediction');
         $response = json_decode($response , true);
