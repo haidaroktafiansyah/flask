@@ -51,23 +51,27 @@ def JoinSc(text):
 # for day in range(1,32):
 #     until= day+1
 #     query = "(#Omicron) lang:id until:2022-02-"+str(until)+" since:2022-02-"+str(day)
-query = "(#Omicron) lang:id"
+def crawls(text):
+    query = text
+    tweets = []
+    limit = 50
 
-tweets = []
-limit = 50
+    for tweet in sntwitter.TwitterHashtagScraper(query).get_items():
+        if len(tweets)==limit:
+            break
+        else:
+            tweets.append([tweet.date, tweet.user.username, tweet.content])
+            
 
-for tweet in sntwitter.TwitterHashtagScraper(query).get_items():
-    if len(tweets)==limit:
-        break
-    else:
-        tweets.append([tweet.date, tweet.user.username, tweet.content])
-        
+    df = pd.DataFrame(tweets, columns=['date','username', 'tweet'])
+    df['tweet'] = df['tweet'].apply(lambda x: deEmojify(x))
+    df['tweet'] = df['tweet'].apply(lambda x: removePunctuation(x))
+    df['tweet'] = df['tweet'].apply(lambda x: Tokenize(x))
+    df['tweet'] = df['tweet'].apply(lambda x: JoinSc(x))
 
-df = pd.DataFrame(tweets, columns=['date','username', 'tweet'])
-df['tweet'] = df['tweet'].apply(lambda x: deEmojify(x))
-df['tweet'] = df['tweet'].apply(lambda x: removePunctuation(x))
-df['tweet'] = df['tweet'].apply(lambda x: Tokenize(x))
-df['tweet'] = df['tweet'].apply(lambda x: JoinSc(x))
+    return df
+
+    
 
 # extr=df[['date','username','tweet']]
 # extr.to_csv('./tes_data.csv')
