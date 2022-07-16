@@ -16,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index']);
 Route::get('/prediction', [MainController::class, 'index2']);
+Route::get('/crawl', [MainController::class, 'index3']);
+Route::get('/query', [MainController::class, 'index3']);
+
 Route::post('/upload/proses', [MainController::class, 'upload']);
+Route::post('/query', [MainController::class, 'crawl']);

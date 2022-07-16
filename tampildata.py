@@ -2,7 +2,8 @@ import snscrape.modules.twitter as sntwitter
 import pandas as pd
 import predict as predictFile
 import numpy as np
-from flask import Flask, jsonify
+import crawl as cr
+from flask import Flask, jsonify, request
 
 df = pd.read_csv("./clean_data.csv")
 
@@ -14,6 +15,12 @@ def index():
 @app.route('/prediction')
 def index2():
     data = predictFile.update()
+    return data.to_json(orient='records')
+
+@app.route('/crawlDatas' , methods=["POST"])
+def index3():
+    query = request.json
+    data = cr.crawls(query['inputQuery'])
     return data.to_json(orient='records')
 
 app.run()

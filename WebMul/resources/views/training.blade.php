@@ -1,6 +1,6 @@
-<! DOCTYPE html>
-    <html lang="en">
+@extends('template')
 
+<<<<<<< HEAD
     <head>
         <title> WEBMUL</title>
         <meta charset="utf-8">
@@ -69,10 +69,41 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <script>
-            $('table').DataTable();
-        </script>
-    </body>
+=======
+@section('content')
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-bordered table-hover dt-responsive">
+                <thead>
+                    <tr>
+                        <th> No </th>
+                        <th> date </th>
+                        <th> username </th>
+                        <th> Steaming </th>
+                        <th> label</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($data as $eachData) { ?>
+                        <tr>
+                            <td> <?php echo $eachData['Unnamed: 0']; ?></td>
+                            <td> <?php echo date('Y-m-d', strtotime($eachData['date'])); ?></td>
+                            <td> <?php echo $eachData['username']; ?></td>
+                            <td> <?php echo $eachData['Steaming']; ?></td>
+                            <td> <?php echo $eachData['label']; ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+                <tfoot>
 
-    </html>
+                </tfoot>
+            </table>
+>>>>>>> 2fb278ad73af793f16f80eae280ab800130dfa35
+        </div>
+    </div>
+</div>
+<script>
+    $('table').DataTable();
+</script>
+@endsection
