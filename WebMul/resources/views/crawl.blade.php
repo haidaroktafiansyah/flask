@@ -20,7 +20,7 @@
                         <tr>
                             <td> <?php echo $count;
                                     $count++ ?></td>
-                            <td> <?php echo date('Y-m-d', strtotime($eachData['date'])); ?></td>
+                            <td> <?php echo date("Y-m-d H:i:s", substr($eachData['date'], 0, 10)); ?></td>
                             <td> <?php echo $eachData['username']; ?></td>
                             <td> <?php echo $eachData['tweet']; ?></td>
                         </tr>
@@ -48,6 +48,15 @@
                     <b>query</b><br />
                     <input type="text" name="inputQuery">
                 </div>
+                <div class="form-group">
+                    <b>start :</b><br />
+                    <input id="datepicker" name="start" width="276" />
+                </div>
+
+                <div class="form-group">
+                    <b>end :</b><br />
+                    <input id="datepicker2" name="end"  width="276" />
+                </div>
 
                 <input type="submit" value="submit" class="btn btn-primary">
             </form>
@@ -56,6 +65,14 @@
 </div>
 <script>
     $('table').DataTable();
+    $('#datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        uiLibrary: 'bootstrap4'
+    });
+    $('#datepicker2').datepicker({
+        format: 'yyyy-mm-dd',
+        uiLibrary: 'bootstrap4'
+    });
 </script>
 
 @endsection
