@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainController::class, 'index']);
+Route::get('/test', [MainController::class, 'index4']);
 Route::get('/prediction', [MainController::class, 'index2']);
 Route::get('/crawl', [MainController::class, 'index3']);
 Route::get('/query', [MainController::class, 'index3']);

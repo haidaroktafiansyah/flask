@@ -5,7 +5,8 @@ import numpy as np
 import crawl as cr
 from flask import Flask, jsonify, request
 
-df = pd.read_csv("./clean_data.csv")
+df = pd.read_csv("./train_data.csv")
+df2 = pd.read_csv("./test_data.csv")
 
 app = Flask(__name__)
 @app.route('/trainingDatas')
@@ -22,5 +23,9 @@ def index3():
     query = request.json
     data = cr.crawls(query['inputQuery'])
     return data.to_json(orient='records')
+
+@app.route('/testDatas')
+def index4():
+    return df2.to_json(orient='records')
 
 app.run()
