@@ -63,11 +63,42 @@ class MainController extends Controller
                 ->withInput();
         }
 
+        $query['inputQuery'] = '(#' . $request->inputQuery . ') lang:id';
+
+        if (isset($request->end) && isset($request->start)) {
+            //start
+            $since = explode('/', $request->start);
+            $since = array_reverse($since);
+            $since = implode("-", $since);
+            //end
+            $end = explode('/', $request->end);
+            $end = array_reverse($end);
+            $end = implode("-", $end);
+            $query['inputQuery'] = $query['inputQuery']   . ' since:' . $since . ' until:' . $end;
+        } else {
+            if (isset($request->start)) {
+                //start
+                $since = explode('/', $request->start);
+                $since = array_reverse($since);
+                $since = implode("-", $since);
+
+                $query['inputQuery'] = $query['inputQuery'] . ' since:' . $since;
+            }
+            if (isset($request->end)) {
+                //end
+                $end = explode('/', $request->end);
+                $end = array_reverse($end);
+                $end = implode("-", $end);
+
+                $query['inputQuery'] = $query['inputQuery'] . ' until:' . $end;
+            }
+        }
+        // dd($query['inputQuery']);
         $response = Http::post(
             'http://127.0.0.1:5000/crawlDatas',
-            $request->all()
+            $query
         );
-        
+        // dd($response->json());
         return view('crawl')->with('data', $response->json());
     }
 }
